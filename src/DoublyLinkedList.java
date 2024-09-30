@@ -51,6 +51,45 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         } // else
     } // print
 
+    /**
+       Inserts an item into the list according to its value.
+       @param item the new item being inserted.
+     */
+    public void insertItem(T item) {
+        NodeType<T> node = new NodeType<T>();
+        node.info = item;
+        node.next = null;
+        node.back = null;
+        NodeType<T> loc = head;
+        NodeType<T> pred = null;
+
+        if (head == null) {
+            head = node;
+        } else {
+            while (item.compareTo(loc.info) == 1) {
+                pred = loc;
+                loc = loc.next;
+                if (loc == null) {
+                    pred.next = node;
+                    node.back = pred;
+                    break;
+                } // if
+            } // while
+        } // else
+        if (pred == null && item.compareTo(loc.info) != 0) {
+            head = node;
+            node.next = loc;
+            loc.back = node;
+        } else if (item.compareTo(loc.info) == -1) {
+            pred.next = node;
+            node.next = loc;
+            node.back = pred;
+            loc.back = node;
+        } else if (item.compareTo(loc.info) == 0) {
+            throw new IllegalStateException("Item already exists");
+        } // else if
+    } // insertItem
+
 
 
 

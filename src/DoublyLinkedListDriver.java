@@ -70,12 +70,13 @@ public class DoublyLinkedListDriver {
             } // if : command d : Delete value
 
             else if (inputcom.equals("p")) {
-
+                System.out.print("The list is: ");
+                list.printList();
                 System.out.print("Enter a command: ");
             } // if : command p : Print list
 
             else if (inputcom.equals("l")) {
-
+                System.out.println("The length of the list is " + list.length());
                 System.out.print("Enter a command: ");
             } // if : command l : Length
 
