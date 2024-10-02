@@ -37,7 +37,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     /**
        Prints the list.
      */
-    public void printList() {
+    public void print() {
         System.out.print("The list is: ");
         if (head == null) {
             System.out.print("\n");
@@ -88,29 +88,29 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if (head == null) {
             head = node;
         } else {
-            while (item.compareTo(loc.info) == 1) {
+            while (item.compareTo(loc.info) > 0) {
                 pred = loc;
                 loc = loc.next;
                 if (loc == null) {
                     break;
                 } // if
             } // while
+            if (loc == null) {
+                pred.next = node;
+                node.back = pred;
+            } else if (pred == null && item.compareTo(loc.info) != 0) {
+                head = node;
+                node.next = loc;
+                loc.back = node;
+            } else if (item.compareTo(loc.info) < 0) {
+                pred.next = node;
+                node.next = loc;
+                node.back = pred;
+                loc.back = node;
+            } else if (item.compareTo(loc.info) == 0) {
+                throw new IllegalStateException("Item already exists");
+            } // else if
         } // else
-        if (loc == null) {
-            pred.next = node;
-            node.back = pred;
-        } else if (pred == null && item.compareTo(loc.info) != 0) {
-            head = node;
-            node.next = loc;
-            loc.back = node;
-        } else if (item.compareTo(loc.info) == -1) {
-            pred.next = node;
-            node.next = loc;
-            node.back = pred;
-            loc.back = node;
-        } else if (item.compareTo(loc.info) == 0) {
-            throw new IllegalStateException("Item already exists");
-        } // else if
     } // insertItem
 
 
