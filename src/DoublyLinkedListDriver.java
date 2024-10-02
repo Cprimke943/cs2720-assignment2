@@ -13,34 +13,57 @@ public class DoublyLinkedListDriver {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String inputcom;
+        String type;
+        String com;
+        String inputS;
+        int inputI;
+        Double inputD;
 
         System.out.print("Enter list type (i - int, d - double, s - string): ");
 
         while (true) {
 
-            inputcom = sc.next();
+            type = sc.next();
 
-            if (inputcom.equals("i")) {
+            /*
+            if (type.equals("i")) {
                 DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
                 break;
             } // i : Integer
 
-            else if (inputcom.equals("d")) {
-                DoublyLinkedList<Double> linklist = new DoublyLinkedList<Double>();
+            else if (type.equals("d")) {
+                DoublyLinkedList<Double> list = new DoublyLinkedList<Double>();
                 break;
             } // d : Double
 
-            else if (inputcom.equals("s")) {
-                DoublyLinkedList<String> linklist = new DoublyLinkedList<String>();
+            else if (type.equals("s")) {
+                DoublyLinkedList<String> list = new DoublyLinkedList<String>();
                 break;
             } // s : String
-
-            else {
+            */
+            if (type.equals("s") || type.equals("i") || type.equals("d"))
+                break;
+            else
                 System.out.print("Please enter a proper type (i - int, d - double, s - string): ");
-            } // no proper command input
+             // no proper command input
 
         } // type of list : while
+
+        if (type.equals("i")) {
+            DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
+            break;
+        } // i : Integer
+
+        else if (type.equals("d")) {
+            DoublyLinkedList<Double> list = new DoublyLinkedList<Double>();
+            break;
+        } // d : Double
+
+        else if (type.equals("s")) {
+            DoublyLinkedList<String> list = new DoublyLinkedList<String>();
+            break;
+        } // s : String
+
 
         System.out.println("Commands:");
         System.out.println("(i) - Insert value");
@@ -57,57 +80,84 @@ public class DoublyLinkedListDriver {
 
         while (true) {
 
-            inputcom = sc.next();
+            com = sc.next();
 
-            if (inputcom.equals("i")) {
-
+            if (com.equals("i")) {
+                list.print();
+                if (type.equals("s")) {
+                    System.out.print("Enter a string to insert: ");
+                    inputS = sc.next();
+                    try {
+                        list.insert(inputS);
+                    } catch (IllegalStateException e) {
+                        System.out.println(e);
+                    } // try catch
+                } else {
+                    System.out.print("Enter a number to insert: ");
+                    if (type.equals("d")) {
+                        inputD = sc.nextDouble();
+                        try {
+                            list.insert(inputD);
+                        } catch (IllegalStateException e) {
+                            System.out.println(e);
+                        } // try catch
+                    } else {
+                        inputI = sc.nextInt();
+                        try {
+                            list.insert(inputI);
+                        } catch (IllegalStateException e) {
+                            System.out.println(e);
+                        } // try catch
+                    } // else
+                } // else
+                list.print();
+                list.printReverse();
                 System.out.print("Enter a command: ");
             } // if : command i : Insert value
 
-            else if (inputcom.equals("d")) {
+            else if (com.equals("d")) {
 
                 System.out.print("Enter a command: ");
             } // if : command d : Delete value
 
-            else if (inputcom.equals("p")) {
-                System.out.print("The list is: ");
+            else if (com.equals("p")) {
                 list.printList();
                 System.out.print("Enter a command: ");
-            } // if : command p : Print list
+            } // if : command p : Print list : done
 
-            else if (inputcom.equals("l")) {
+            else if (com.equals("l")) {
                 System.out.println("The length of the list is " + list.length());
                 System.out.print("Enter a command: ");
-            } // if : command l : Length
+            } // if : command l : Length : done
 
-            else if (inputcom.equals("t")) {
-
+            else if (com.equals("t")) {
+                list.printReverse();
                 System.out.print("Enter a command: ");
-            } // if : command t : Print reverse
+            } // if : command t : Print reverse : done
 
-            else if (inputcom.equals("r")) {
+            else if (com.equals("r")) {
 
                 System.out.print("Enter a command: ");
             } // if : command r : Reverse list
 
-            else if (inputcom.equals("b")) {
+            else if (com.equals("b")) {
 
                 System.out.print("Enter a command: ");
             } // if : command b : Delete Subsection
 
-            else if (inputcom.equals("s")) {
+            else if (com.equals("s")) {
 
                 System.out.print("Enter a command: ");
             } // if : command s : Swap Alternate
 
-            else if (inputcom.equals("q")) {
+            else if (com.equals("q")) {
                 System.out.println("Exiting the program...");
                 break;
-            } // if : command q : quit
+            } // if : command q : quit : done
 
             else {
                 System.out.print("Invalid command try again: " );
-            } // else : invalid command
+            } // else : invalid command : done
 
         } // command loop : while
 

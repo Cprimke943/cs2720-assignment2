@@ -38,6 +38,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
        Prints the list.
      */
     public void printList() {
+        System.out.print("The list is: ");
         if (head == null) {
             System.out.print("\n");
         } else {
@@ -52,6 +53,28 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     } // print
 
     /**
+       Prints the reversed list.
+     */
+    public void printReverse() {
+        System.out.print("The reverse list: ");
+        if (head == null) {
+            System.out.print("\n");
+        } else {
+            NodeType<T> node = head;
+            while (node.next != null) {
+                node = node.next;
+            } // while
+            System.out.print(node.info);
+            while (node.back != null) {
+                node = node.back;
+                System.out.print(" " + node.info);
+            } // while
+            System.out.print("\n");
+        } // else
+    } // printReverse
+
+
+    /**
        Inserts an item into the list according to its value.
        @param item the new item being inserted.
      */
@@ -62,7 +85,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         node.back = null;
         NodeType<T> loc = head;
         NodeType<T> pred = null;
-
         if (head == null) {
             head = node;
         } else {
@@ -70,13 +92,14 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                 pred = loc;
                 loc = loc.next;
                 if (loc == null) {
-                    pred.next = node;
-                    node.back = pred;
                     break;
                 } // if
             } // while
         } // else
-        if (pred == null && item.compareTo(loc.info) != 0) {
+        if (loc == null) {
+            pred.next = node;
+            node.back = pred;
+        } else if (pred == null && item.compareTo(loc.info) != 0) {
             head = node;
             node.next = loc;
             loc.back = node;
