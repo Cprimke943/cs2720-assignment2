@@ -83,7 +83,7 @@ public class DoublyLinkedListDriver {
                     try {
                         listS.insertItem(inputS);
                     } catch (IllegalStateException e) {
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     } // try catch
                     listS.print();
                     listS.printReverse();
@@ -94,7 +94,7 @@ public class DoublyLinkedListDriver {
                     try {
                         listD.insertItem(inputD);
                     } catch (IllegalStateException e) {
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     } // try catch
                     listD.print();
                     listD.printReverse();
@@ -105,7 +105,7 @@ public class DoublyLinkedListDriver {
                     try {
                         listI.insertItem(inputI);
                     } catch (IllegalStateException e) {
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     } // try catch
                     listI.print();
                     listI.printReverse();
@@ -114,7 +114,28 @@ public class DoublyLinkedListDriver {
             } // if : command i : Insert value
 
             else if (com.equals("d")) {
-
+                if (type.equals("s")) {
+                    listS.print();
+                    System.out.print("Enter a string to delete: ");
+                    inputS = sc.next();
+                    listS.deleteItem(inputS);
+                    listS.print();
+                    listS.printReverse();
+                } else if (type.equals("d")) {
+                    listD.print();
+                    System.out.print("Enter a number to delete: ");
+                    inputD = sc.nextDouble();
+                    listD.deleteItem(inputD);
+                    listD.print();
+                    listD.printReverse();
+                } else if (type.equals("i")) {
+                    listI.print();
+                    System.out.print("Enter a number to delete: ");
+                    inputI = sc.nextInt();
+                    listI.deleteItem(inputI);
+                    listI.print();
+                    listI.printReverse();
+                } // else
                 System.out.print("Enter a command: ");
             } // if : command d : Delete value
 

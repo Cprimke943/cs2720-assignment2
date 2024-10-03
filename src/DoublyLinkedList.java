@@ -113,6 +113,41 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         } // else
     } // insertItem
 
+    /**
+       Deletes the node in the list that contains an item equal to the
+       item parameter.
+       @param item the item to be removed.
+    */
+    public void deleteItem(T item) {
+        NodeType<T> loc = head;
+        NodeType<T> pred = null;
+
+        if (head == null) {
+            System.out.println("You cannot delete from an empty list");
+        } else {
+            while (item.compareTo(loc.info) != 0) {
+                pred = loc;
+                loc = loc.next;
+                if (loc == null) {
+                    break;
+                } // if
+            } // while
+            if (loc == null) {
+                System.out.println("The item is not present in the list");
+            } else if (pred == null) {
+                if (length() > 1) {
+                    head = loc.next;
+                    head.back = null;
+                } else {
+                    head = null;
+                } // if else
+            } else {
+                pred.next = loc.next;
+                loc.next.back = pred;
+            } // else
+        } // else
+    } // deleteItem
+
 
 
 
