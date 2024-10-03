@@ -38,7 +38,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
        Prints the list.
      */
     public void print() {
-        System.out.print("The list is: ");
+
         if (head == null) {
             System.out.print("\n");
         } else {
@@ -56,7 +56,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
        Prints the reversed list.
      */
     public void printReverse() {
-        System.out.print("The reverse list: ");
+
         if (head == null) {
             System.out.print("\n");
         } else {
@@ -72,7 +72,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             System.out.print("\n");
         } // else
     } // printReverse
-
 
     /**
        Inserts an item into the list according to its value.
@@ -148,7 +147,38 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         } // else
     } // deleteItem
 
-
+    /**
+       Reverses the list by going through and changing all next's
+       to back's and back's to next's.
+     */
+    public void reverseList() {
+        NodeType<T> loc = head;
+        NodeType<T> pred = null;
+        if (head != null) {
+            if (length() > 1) {
+                while (loc != null) {
+                    if (loc.next == null) {
+                        break;
+                    } // if
+                    pred = loc;
+                    loc = loc.next;
+                    pred.next = pred.back;
+                    pred.back = loc;
+                    loc.back = loc.next;
+                    loc.next = pred;
+                    pred = loc;
+                    loc = loc.back;
+                } // while
+                if (loc == null) {
+                    head = pred;
+                } else {
+                    loc.back = loc.next;
+                    loc.next = pred;
+                    head = loc;
+                } // if : even length list : else : odd length list
+            } // if
+        } // if
+    } // reverseList
 
 
 } // DoublyLinkedList

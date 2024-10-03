@@ -77,6 +77,7 @@ public class DoublyLinkedListDriver {
 
             if (com.equals("i")) {
                 if (type.equals("s")) {
+                    System.out.print("The list is: ");
                     listS.print();
                     System.out.print("Enter a string to insert: ");
                     inputS = sc.next();
@@ -85,9 +86,12 @@ public class DoublyLinkedListDriver {
                     } catch (IllegalStateException e) {
                         System.out.println(e.getMessage());
                     } // try catch
+                    System.out.print("The list is: ");
                     listS.print();
+                    System.out.print("The reverse list: ");
                     listS.printReverse();
                 } else if (type.equals("d")) {
+                    System.out.print("The list is: ");
                     listD.print();
                     System.out.print("Enter a number to insert: ");
                     inputD = sc.nextDouble();
@@ -96,9 +100,12 @@ public class DoublyLinkedListDriver {
                     } catch (IllegalStateException e) {
                         System.out.println(e.getMessage());
                     } // try catch
+                    System.out.print("The list is: ");
                     listD.print();
+                    System.out.print("The reverse list: ");
                     listD.printReverse();
                 } else if (type.equals("i")) {
+                    System.out.print("The list is: ");
                     listI.print();
                     System.out.print("Enter a number to insert: ");
                     inputI = sc.nextInt();
@@ -107,7 +114,9 @@ public class DoublyLinkedListDriver {
                     } catch (IllegalStateException e) {
                         System.out.println(e.getMessage());
                     } // try catch
+                    System.out.print("The list is: ");
                     listI.print();
+                    System.out.print("The reverse list: ");
                     listI.printReverse();
                 } // else
                 System.out.print("Enter a command: ");
@@ -119,21 +128,27 @@ public class DoublyLinkedListDriver {
                     System.out.print("Enter a string to delete: ");
                     inputS = sc.next();
                     listS.deleteItem(inputS);
+                    System.out.print("The list is: ");
                     listS.print();
+                    System.out.print("The reverse list: ");
                     listS.printReverse();
                 } else if (type.equals("d")) {
                     listD.print();
                     System.out.print("Enter a number to delete: ");
                     inputD = sc.nextDouble();
                     listD.deleteItem(inputD);
+                    System.out.print("The list is: ");
                     listD.print();
+                    System.out.print("The reverse list: ");
                     listD.printReverse();
                 } else if (type.equals("i")) {
                     listI.print();
                     System.out.print("Enter a number to delete: ");
                     inputI = sc.nextInt();
                     listI.deleteItem(inputI);
+                    System.out.print("The list is: ");
                     listI.print();
+                    System.out.print("The reverse list: ");
                     listI.printReverse();
                 } // else
                 System.out.print("Enter a command: ");
@@ -141,10 +156,13 @@ public class DoublyLinkedListDriver {
 
             else if (com.equals("p")) {
                 if (type.equals("s")) {
+                    System.out.print("The list is: ");
                     listS.print();
                 } else if (type.equals("d")) {
+                    System.out.print("The list is: ");
                     listD.print();
                 } else if (type.equals("i")) {
+                    System.out.print("The list is: ");
                     listI.print();
                 } // else if
                 System.out.print("Enter a command: ");
@@ -163,17 +181,38 @@ public class DoublyLinkedListDriver {
 
             else if (com.equals("t")) {
                 if (type.equals("s")) {
+                    System.out.print("The reverse list: ");
                     listS.printReverse();
                 } else if (type.equals("d")) {
+                    System.out.print("The reverse list: ");
                     listD.printReverse();
                 } else if (type.equals("i")) {
+                    System.out.print("The reverse list: ");
                     listI.printReverse();
                 } // else if
                 System.out.print("Enter a command: ");
             } // if : command t : Print reverse : done
 
             else if (com.equals("r")) {
-
+                if (type.equals("s")) {
+                    System.out.print("The original list: ");
+                    listS.print();
+                    System.out.print("The reversed list: ");
+                    listS.printReverse();
+                    listS.reverseList();
+                } else if (type.equals("d")) {
+                    System.out.print("The original list: ");
+                    listD.print();
+                    System.out.print("The reversed list: ");
+                    listD.printReverse();
+                    listD.reverseList();
+                } else if (type.equals("i")) {
+                    System.out.print("The original list: ");
+                    listI.print();
+                    System.out.print("The reversed list: ");
+                    listI.printReverse();
+                    listI.reverseList();
+                } // else if
                 System.out.print("Enter a command: ");
             } // if : command r : Reverse list
 
