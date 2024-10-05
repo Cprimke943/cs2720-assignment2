@@ -195,29 +195,41 @@ public class DoublyLinkedListDriver {
 
             else if (com.equals("r")) {
                 if (type.equals("s")) {
-                    System.out.print("The original list: ");
-                    listS.print();
-                    System.out.print("The reversed list: ");
-                    listS.printReverse();
                     listS.reverseList();
                 } else if (type.equals("d")) {
-                    System.out.print("The original list: ");
-                    listD.print();
-                    System.out.print("The reversed list: ");
-                    listD.printReverse();
                     listD.reverseList();
                 } else if (type.equals("i")) {
-                    System.out.print("The original list: ");
-                    listI.print();
-                    System.out.print("The reversed list: ");
-                    listI.printReverse();
                     listI.reverseList();
                 } // else if
                 System.out.print("Enter a command: ");
             } // if : command r : Reverse list
 
             else if (com.equals("b")) {
-
+                if (type.equals("s")) {
+                    System.out.print("Enter the lower bound: ");
+                    inputS = sc.next();
+                    String lower = inputS;
+                    System.out.print("Enter the upper bound: ");
+                    inputS = sc.next();
+                    String upper = inputS;
+                    listS.deleteSubsection(lower, upper);
+                } else if (type.equals("d")) {
+                    System.out.print("Enter the lower bound: ");
+                    inputD = sc.nextDouble();
+                    Double lower = inputD;
+                    System.out.print("Enter the upper bound: ");
+                    inputD = sc.nextDouble();
+                    Double upper = inputD;
+                    listD.deleteSubsection(lower, upper);
+                } else if (type.equals("i")) {
+                    System.out.print("Enter the lower bound: ");
+                    inputI = sc.nextInt();
+                    int lower = inputI;
+                    System.out.print("Enter the upper bound: ");
+                    inputI = sc.nextInt();
+                    int upper = inputI;
+                    listI.deleteSubsection(lower, upper);
+                } // else
                 System.out.print("Enter a command: ");
             } // if : command b : Delete Subsection
 

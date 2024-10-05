@@ -38,7 +38,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
        Prints the list.
      */
     public void print() {
-
         if (head == null) {
             System.out.print("\n");
         } else {
@@ -84,6 +83,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         node.back = null;
         NodeType<T> loc = head;
         NodeType<T> pred = null;
+
         if (head == null) {
             head = node;
         } else {
@@ -154,6 +154,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     public void reverseList() {
         NodeType<T> loc = head;
         NodeType<T> pred = null;
+
+        System.out.print("The original list: ");
+        print();
         if (head != null) {
             if (length() > 1) {
                 while (loc != null) {
@@ -178,7 +181,58 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                 } // if : even length list : else : odd length list
             } // if
         } // if
+        System.out.print("The reversed list: ");
+        print();
     } // reverseList
 
+    /**
+       Deletes the subsection of items between the two given (inclusive).
+       @param lower lower bound of the subsection
+       @param upper upper bound of the subsection
+     */
+    public void deleteSubsection(T lower, T upper) {
+        NodeType<T> loc = head;
+        NodeType<T> pred = head;
+
+        System.out.print("The original list: ");
+        print();
+        if (head != null) {
+            while (lower.compareTo(pred.next.info) > 0 && lower.compareTo(pred.next.info) != 0) {
+                pred = pred.next;
+                loc = pred;
+                if (pred.next == null && lower.compareTo(pred.info) > 0) {
+                    pred = pred.next;
+                    break;
+                } else if (pred.next == null) {
+                    break;
+                } // else if
+            } // while
+            while (upper.compareTo(loc.info) > 0 || upper.compareTo(loc.info) == 0) {
+                loc = loc.next;
+                if (loc == null) {
+                    break;
+                } // if
+            } // while
+            if (pred != null && (lower.compareTo(pred.info) == 0 || lower.compareTo(pred.info) < 0)) {
+                if (loc != null) {
+                    head = loc;
+                    loc.back = null;
+                } else {
+                    head = null;
+                } // else
+            } else if (pred != null) {
+                pred.next = loc;
+                if (loc != null) {
+                    loc.back = pred;
+                } //if
+            } // else if
+        } // if
+        System.out.print("The modified list: ");
+        print();
+        if (length() != 0) {
+            System.out.print("The reverse list: ");
+            printReverse();
+        } // if
+    } // deleteSubsection
 
 } // DoublyLinkedList
