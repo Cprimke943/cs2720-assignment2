@@ -124,6 +124,7 @@ public class DoublyLinkedListDriver {
 
             else if (com.equals("d")) {
                 if (type.equals("s")) {
+                    System.out.print("The list is: ");
                     listS.print();
                     System.out.print("Enter a string to delete: ");
                     inputS = sc.next();
@@ -133,6 +134,7 @@ public class DoublyLinkedListDriver {
                     System.out.print("The reverse list: ");
                     listS.printReverse();
                 } else if (type.equals("d")) {
+                    System.out.print("The list is: ");
                     listD.print();
                     System.out.print("Enter a number to delete: ");
                     inputD = sc.nextDouble();
@@ -142,6 +144,7 @@ public class DoublyLinkedListDriver {
                     System.out.print("The reverse list: ");
                     listD.printReverse();
                 } else if (type.equals("i")) {
+                    System.out.print("The list is: ");
                     listI.print();
                     System.out.print("Enter a number to delete: ");
                     inputI = sc.nextInt();
@@ -234,7 +237,13 @@ public class DoublyLinkedListDriver {
             } // if : command b : Delete Subsection
 
             else if (com.equals("s")) {
-
+                if (type.equals("s")) {
+                    listS.swapAlternate();
+                } else if (type.equals("d")) {
+                    listD.swapAlternate();
+                } else if (type.equals("i")) {
+                    listI.swapAlternate();
+                } // else if
                 System.out.print("Enter a command: ");
             } // if : command s : Swap Alternate
 

@@ -142,7 +142,9 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                 } // if else
             } else {
                 pred.next = loc.next;
-                loc.next.back = pred;
+                if (loc.next != null) {
+                    loc.next.back = pred;
+                } // if
             } // else
         } // else
     } // deleteItem
@@ -234,5 +236,42 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             printReverse();
         } // if
     } // deleteSubsection
+
+    /**
+       Swaps every other node in the list.
+     */
+    public void swapAlternate() {
+        NodeType<T> loc = head;
+        NodeType<T> pred = null;
+
+        System.out.print("The original list: ");
+        print();
+        if (length() > 1) {
+            loc = head.next;
+            pred = head;
+            head = loc;
+            while (loc != null) {
+                loc.back = pred.back;
+                pred.next = loc.next;
+                pred.back = loc;
+                loc.next = pred;
+                if (pred.next == null) {
+                    break;
+                } // if
+                if (pred.next.next == null) {
+                    pred.next.back = pred;
+                    break;
+                } // if
+                pred.next.back = pred;
+                pred = pred.next;
+                loc = pred.next;
+                pred.back.next = loc;
+            } // while
+        } // if
+        System.out.print("The modified list: ");
+        print();
+        System.out.print("The reverse list: ");
+        printReverse();
+    } // swapAlternate
 
 } // DoublyLinkedList
